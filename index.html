@@ -57,28 +57,86 @@
                         <a class="nav-link" href="#" tabindex="-1" aria-disabled="true">Contact</a>
                     </li>
 
-                    <li class="nav-item dropdown dptop ">
+                    <li class="nav-item ">
+                        <a class="nav-link" data-toggle="modal" data-target="#exampleModal">
+                            <i class=" fas fa-shopping-cart"></i> Cart <span
+                                class="amount bg-info rounded-circle pr-2 pl-2 pb-1 text-white ">0</span>
+                        </a>
+
+                        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog"
+                            aria-labelledby="exampleModalLabel" aria-hidden="true">
+                            <div class="modal-dialog" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="exampleModalLabel"> <i class=" fas fa-shopping-cart"></i>Cart</h5>
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <ul class="cart-list list-unstyled">
+
+                                            <!-- append <li> with selected product item from js -->
+
+                                        </ul>
+                                        <!-- <span class="h6 totalitem pl-3"> ~ Item ~ </span> -->
+                                        <ul class="list-unstyled">
+                                            <li class=" d-inline-flex float-left ml-5"> Total : </li>
+                                            <div class=" d-inline-flex ml-5 pl-5">
+                                                <li class="totalAmount d-inline-flex ">0</li>
+                                                <li class="d-inline-flex ml-2">kr</li>
+                                            </div>
+
+                                        </ul>
+
+
+
+
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary"
+                                            data-dismiss="modal">Close</button>
+                                        <button type="button" class="btn btn-primary clear-all">Clear All</button>
+                                        <button type="button" class="btn btn-primary">Payment</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </li>
+
+                    <!--      <li class="nav-item dropdown dptop ">
                         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
                             data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             <i class=" fas fa-shopping-cart"></i> Cart <span
                                 class="amount bg-info rounded-circle pr-2 pl-2 pb-1 text-white ">0</span>
-                        </a>
-                        <!--  <span class="totalitem mt-3 mb-3"> <span class="amount"></span></span> -->
-                        <div class="dropdown-menu  " id="dropdownitem" aria-labelledby="navbarDropdown">
+                        </a>  -->
+                    <!--  <span class="totalitem mt-3 mb-3"> <span class="amount"></span></span> -->
+                    <!-- <div class="dropdown-menu  " id="dropdownitem" aria-labelledby="navbarDropdown">
                             <span class="h6 totalitem pl-3"> ~ Item ~ </span>
                             <p class="ml-4 pl-4 d-inline-block"> Total : <span class="totalAmount">0 </span><span>
                                     kr</span></p>
-                            <ul class="cart-list list-unstyled">
+                            <ul class="cart-list list-unstyled">  -->
 
-                                <!-- append <li> with selected product item from js -->
+                    <!-- append <li> with selected product item from js -->
 
-                            </ul>
+                    <!--      </ul>
                         </div>
+                    </li> -->
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Sort By Price
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <a class="dropdown-item" id="sort-price-low-high" href="#product"> ~ From Low to High ~</a>
+                            <a class="dropdown-item" id="sort-price-high-low" href="#product">~ From High to Low ~ </a>
                     </li>
                 </ul>
                 <!------------------Search----------------->
                 <form class="form-inline my-2 my-lg-0">
-                    <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+                    <input class="form-control mr-sm-2 inputbox searchfield" type="search" placeholder="Search"
+                        aria-label="Search">
                     <button class="btn my-2 my-sm-0" type="submit"><i class="fas fa-search"></i></button>
                 </form>
             </div>
@@ -88,15 +146,15 @@
 
     <!------------------ The sidebar ---------------------->
 
-    
-<div class="sidebar">
-    <a href="https://github.com/rubikuo" target="_blank"><i class="fab fa-github-square"></i></a>
-    <a href="https://www.linkedin.com/in/ju-i-kuo-88688584/" target="_blank"><i class="fab fa-linkedin "></i></a>
-    <a href="https://www.facebook.com/rubitiara" target="_blank"><i class="fab fa-facebook-square"></i></a>
-    <a href="https://www.instagram.com/p/BolteE_BWqM/" target="_blank"><i class="fab fa-instagram"></i></a>
-    <a href="mailto:rubikuo0115@gmail.com"><i class="fas fa-envelope"></i></a>
-    <a href="#top" class="text-white text-top">TOP</a>
-  </div>
+
+    <div class="sidebar">
+        <a href="https://github.com/rubikuo" target="_blank"><i class="fab fa-github-square"></i></a>
+        <a href="https://www.linkedin.com/in/ju-i-kuo-88688584/" target="_blank"><i class="fab fa-linkedin "></i></a>
+        <a href="https://www.facebook.com/rubitiara" target="_blank"><i class="fab fa-facebook-square"></i></a>
+        <a href="https://www.instagram.com/p/BolteE_BWqM/" target="_blank"><i class="fab fa-instagram"></i></a>
+        <a href="mailto:rubikuo0115@gmail.com"><i class="fas fa-envelope"></i></a>
+        <a href="#top" class="text-white text-top">TOP</a>
+    </div>
 
 
 
@@ -174,14 +232,14 @@
     </section>
 
 
-    <!----------------------Product --------------------------->
+    <!----------------------Products --------------------------->
     <main>
         <section>
             <div class="container">
-
+                <!--  <button class="sortbutton"> Sort </button> -->
                 <div class="row d-flex justify-content-center">
                     <div class="col-9 ">
-                        <h3 class="product text-center mt-5 mb-3" id="product"><i class="fas fa-star h4"></i> Products
+                        <h3 class="products text-center mt-5 mb-3" id="product"><i class="fas fa-star h4"></i> Products
                             <i class="fas fa-star h4"></i></h3>
                         <div class="product-list justify-content-center mt-2" id="top-of-products">
 
