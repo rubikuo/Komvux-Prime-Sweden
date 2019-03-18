@@ -18,7 +18,7 @@ $(() => {
         { name: 'ALISA', price: 1120, id: 15, description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Unde fugit, vel quibusdam fugiat at atque vero, minima ratione tempora architecto sit aperiam similique in quidem, iste nemo debitis quaerat nisi!', picture: 'img/15.jpg', category: 'Winter Mys' }
     ];
 
-  
+
 
     //-------------------to sort by price with only one button -----------//
     //    let counter = 0;
@@ -60,18 +60,36 @@ $(() => {
 
 
     let sortPriceFromLow = document.querySelector("#sort-price-low-high");
-    sortPriceFromLow.addEventListener("click", (e) => {
-        e.preventDefault();
+    sortPriceFromLow.addEventListener("click", () => {
+
 
         let sortArray = products.sort((a, b) => a.price > b.price ? 1 : -1);
         appendList(sortArray);
+
+        $('.product').on('click', 'button', (e) => {
+            let id = e.currentTarget.id;
+            // +id : + sign makes it a number
+            addToCart(products, +id); // call the addToCart Function with arrguments products array and button id( which is set quals to product id)
+
+            $(".totalAmount").text(totalAmount);
+
+        });
     });
 
     let sortPriceFromHigh = document.querySelector("#sort-price-high-low");
-    sortPriceFromHigh.addEventListener("click", (e) => {
-        e.preventDefault();
+    sortPriceFromHigh.addEventListener("click", () => {
+
         let sortArray = products.sort((a, b) => a.price < b.price ? 1 : -1);
         appendList(sortArray);
+
+        $('.product').on('click', 'button', (e) => {
+            let id = e.currentTarget.id;
+            // +id : + sign makes it a number
+            addToCart(products, +id); // call the addToCart Function with arrguments products array and button id( which is set quals to product id)
+
+            $(".totalAmount").text(totalAmount);
+
+        });
     });
 
     // ------------------- search product ---------------------------//
@@ -88,6 +106,20 @@ $(() => {
             }
         )
         appendList(filterList);
+
+
+        $('.product').on('click', 'button', (e) => {
+            let id = e.currentTarget.id;
+            // +id : + sign makes it a number
+            addToCart(products, +id); // call the addToCart Function with arrguments products array and button id( which is set quals to product id)
+
+            $(".totalAmount").text(totalAmount);
+
+        });
+
+
+
+
     })
 
     // ----------------- to show all products on the page -------------------//
@@ -112,7 +144,7 @@ $(() => {
     appendList(products);
 
 
-   //--------------------Cart & add to cart ---------------------// 
+    //--------------------Cart & add to cart ---------------------// 
     let cart = [];
 
     const addToCart = (array, id) => {
@@ -136,7 +168,7 @@ $(() => {
     }
 
 
-//----------------remove from cart one by one ------------------------//
+    //----------------remove from cart one by one ------------------------//
     const removeFromCart = (array, removedItem) => {
         array.splice(removedItem, 1);
 
@@ -164,8 +196,9 @@ $(() => {
         return total;
     }
 
-    //I wonder what this part is about ? what is (.product)? did I link to wrong place?
-
+    // this is about the button
+    // currentTarget is referring to "this" 
+    //+string will make it as number, if this string is a word then the result will be NAN
     $('.product').on('click', 'button', (e) => {
         let id = e.currentTarget.id;
         // +id : + sign makes it a number
@@ -175,36 +208,47 @@ $(() => {
 
     });
 
+    // item removed function
     $('.cart-list').on('click', 'button', (e) => {
         let item = $(e.currentTarget).closest('li').remove();
         removeFromCart(cart, item);
         populateCart(cart);
-        
 
         $(".totalAmount").text(totalAmount);
 
     });
 
 
-  //---------------------------- Clear All -------------------------//
+    //---------------------------- Clear All -------------------------//
 
-  /* It sucessfully clear all the items and amount in the cart but 
-  when I re-select the products, item will not show in the cart, only total amount shows up */
-  
+    /* It sucessfully clear all the items and amount in the cart but 
+    when I re-select the products, item will not show in the cart, only total amount shows up */
+
     const removeAll = () => {
         $('.cart-list').remove();
-        cart =[];
+        cart = [];
 
-        }; 
-   
+    };
+
     $('.clear-all').click((e) => {
         removeAll();
         $('span.amount').text(0);
-        $(".totalAmount").text(totalAmount);
+
+        $(".totalAmount").text(totalAmount); //because cart has nothing inside so total amount will be 0
+
+        $('.product').on('click', 'button', (e) => {
+            let id = e.currentTarget.id;
+            // +id : + sign makes it a number
+            
+            addToCart(products, +id); // call the addToCart Function with arrguments products array and button id( which is set quals to product id)
+
+            $(".totalAmount").text(totalAmount);
+
+        });
 
     });
 
-  
+
 
     // document.getElementById('dropdownitem').addEventListener('click', function (event) {
     //     event.stopPropagation();
