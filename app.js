@@ -34,6 +34,7 @@ const appendList = (array) => {
     });
     $('.product-list').html(template);
 };
+appendList(products);
 
 const addToCart = (array, id) => {
     let a = array.find(i => i.id === id); //after clicking the buying button, if the button's id equals item's id, push the item a into the cart
@@ -58,12 +59,6 @@ const removeFromCart = (array, removedItem) => {
 };
 
 const populateCart = (array) => {
-    let item = `
-            <li class"item" id="${array.id}">
-            <span class="cartitem">${array.name}</span>
-            <button type="button" class="cancelbtn"><i class="fas fa-times"></i></button>
-            </li>
-            `;
     $('span.amount').text(array.length);
 };
 
