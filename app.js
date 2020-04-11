@@ -147,40 +147,6 @@ $(() => {
 		}
 	];
 
-	//-------------------to sort by price with only one button -----------//
-	//    let counter = 0;
-	//     // to connect sort button with js
-	//     let sortButton = document.querySelector(".sortbutton");
-	//     // to create click funtion, set button original value 0, after click becomes 1
-
-	//     sortButton.addEventListener("click",function(){
-	//     if (counter === 0){
-	//         counter = 1;
-	//     let sortArray = products.sort(function(a,b){
-	//         if(a.price >b.price){
-	//             return 1;
-	//         }
-	//         else {return -1};
-
-	//     })
-
-	// appendList(sortArray);
-	// }
-	// else if (counter === 1){
-	//     console.log(counter);
-	//     counter = 0;
-	// let sortArray = products.sort(function(a,b){
-	//     if(a.price >b.price){
-	//         return -1;
-	//     }
-	//     else {return 1};
-
-	// })
-	// appendList(sortArray);
-	// }
-
-	// })
-
 	// --------------------to sort price from low to high or high to low from top navigation -----------------//
 
 	let sortPriceFromLow = document.querySelector('#sort-price-low-high');

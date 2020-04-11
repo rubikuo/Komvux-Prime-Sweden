@@ -1,123 +1,140 @@
-html, body{
-    height: 100%;
-    scroll-behavior: smooth;
-  }
-
-
-body { 
-    background:linear-gradient(0deg,rgba(194, 196, 199, 0.755),rgba(194, 196, 199, 0.755)),
-    url("https://images.unsplash.com/photo-1536167038724-17be8c5e6876?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60");
-       
-        background-position: center center;
-        background-repeat:  no-repeat;
-        background-attachment: fixed;
-        background-size:  cover;
-        background-color: rgb(245, 241, 241); 
-       font-family: 'Berkshire Swash', cursive;
-
+html,
+body {
+	height: 100%;
+	scroll-behavior: smooth;
 }
 
+body {
+	background: linear-gradient(0deg, rgba(194, 196, 199, 0.755), rgba(194, 196, 199, 0.755)),
+		url("https://images.unsplash.com/photo-1536167038724-17be8c5e6876?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60");
 
+	background-position: center center;
+	background-repeat: no-repeat;
+	background-attachment: fixed;
+	background-size: cover;
+	background-color: rgb(245, 241, 241);
+	font-family: 'Berkshire Swash', cursive;
+}
 
 .header {
-    font-family: 'Berkshire Swash', cursive;
+	font-family: 'Berkshire Swash', cursive;
 }
 
+.hr1 {
+	display: block;
+	position: relative;
+	right: 60px;
+	top: 28px;
+	border-width: 1px;
+	width: 4%;
+	border-color: black;
+}
 
-.hr1 { 
-    display: block;
-    position: relative;
-    right:60px;
-    top: 28px;
-    border-width: 1px;
-    width: 4%;
-    border-color:black;
-  
-  } 
-
-  .hr2 { 
-    display: block;
-    position: relative;
-    left: 60px;
-    bottom: 24px;
-    border-width: 1px;
-    width: 4%;
-    border-color:black;
-  } 
+.hr2 {
+	display: block;
+	position: relative;
+	left: 60px;
+	bottom: 24px;
+	border-width: 1px;
+	width: 4%;
+	border-color: black;
+}
 
 .divider {
-    border-color: rgb(241, 238, 238);
+	border-color: rgb(241, 238, 238);
 }
 
-.btn:focus, .btn.focus {
-    box-shadow:none;
-  }
+.btn:focus,
+.btn.focus {
+	box-shadow: none;
+}
 
 /* heart icon */
 .fa-heart {
-   font-size: 0.9rem;
+	font-size: 0.9rem;
 }
 
 /* make top navbar fix in the top */
 #topnav {
-    position: fixed;
-    top:0;
-    z-index:9999; /* to move the navbar layer to the front(top) */
-    width: 100%;
+	position: fixed;
+	top: 0;
+	z-index: 9999; /* to move the navbar layer to the front(top) */
+	width: 100%;
 }
 
 /* set dropdown area a size */
 
 #dropdownitem {
-    min-width: 20rem;
-    max-height: 11rem;
-    overflow: auto; /* the scroll down on the right side */
+	min-width: 20rem;
+	max-height: 11rem;
+	overflow: auto; /* the scroll down on the right side */
 }
-
-
-
 
 /* The side navigation menu - make it fixed on the left side */
 .sidebar {
-    margin: 0;
-    padding: 0;
-    width: 50px;
-    background-color: #0d11ec46;
-    position: fixed;
-    height: 290px;
-    border-radius:0px 3px 3px 0px; 
-    top: 90px;
-  }
-
+	margin: 0;
+	padding: 0;
+	width: 50px;
+	background-color: #0d11ec46;
+	position: fixed;
+	height: 290px;
+	border-radius: 0px 3px 3px 0px;
+	top: 90px;
+}
 
 /* Sidebar links */
 .sidebar a {
-    display: block;
-    color: black;
-    padding: 10px;
-    text-decoration: none;
-  }
-  
-  /* Active/current link */
-  .sidebar a.active {
-    background-color: #4CAF50;
-    color: white;
-  }
-  
-  /* Links on mouse-over */
-  .sidebar a:hover:not(.active) {
-    background-color: #555;
-    color: white;
-  }
-  
-  /* Page content. The value of the margin-left property should match the value of the sidebar's width property */
-  div.content {
-    margin-left: 200px;
-    padding: 1px 16px;
-    height: 1000px;
-  }
-  
-  .fa-linkedin, .fa-facebook-square, .fa-instagram, .fa-envelope, .fa-github-square {
-    font-size: 1.5rem;
-    color: #fff;
-  }  
+	display: block;
+	color: black;
+	padding: 10px;
+	text-decoration: none;
+}
+
+/* Active/current link */
+.sidebar a.active {
+	background-color: #4caf50;
+	color: white;
+}
+
+/* Links on mouse-over */
+.sidebar a:hover:not(.active) {
+	background-color: #555;
+	color: white;
+}
+
+/* Page content. The value of the margin-left property should match the value of the sidebar's width property */
+div.content {
+	margin-left: 200px;
+	padding: 1px 16px;
+	height: 1000px;
+}
+
+.fa-linkedin,
+.fa-facebook-square,
+.fa-instagram,
+.fa-envelope,
+.fa-github-square {
+	font-size: 1.5rem;
+	color: #fff;
+}
+
+.search-form {
+	position: relative;
+}
+
+.search-icon {
+	position: absolute;
+	top: 50%;
+	left: 165px;
+  transform: translateY(-50%);
+  color: grey;
+}
+
+@media only screen and (max-width: 575px) {
+	.search-form {
+		height: 38px;
+	}
+	.search-icon {
+		left: 90%;
+	}
+}
