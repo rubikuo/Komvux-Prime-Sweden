@@ -147,9 +147,96 @@ $(() => {
 		}
 	];
 
+	//-------------------to sort by price with only one button -----------//
+	//    let counter = 0;
+	//     // to connect sort button with js
+	//     let sortButton = document.querySelector(".sortbutton");
+	//     // to create click funtion, set button original value 0, after click becomes 1
+
+	//     sortButton.addEventListener("click",function(){
+	//     if (counter === 0){
+	//         counter = 1;
+	//     let sortArray = products.sort(function(a,b){
+	//         if(a.price >b.price){
+	//             return 1;
+	//         }
+	//         else {return -1};
+
+	//     })
+
+	// appendList(sortArray);
+	// }
+	// else if (counter === 1){
+	//     console.log(counter);
+	//     counter = 0;
+	// let sortArray = products.sort(function(a,b){
+	//     if(a.price >b.price){
+	//         return -1;
+	//     }
+	//     else {return 1};
+
+	// })
+	// appendList(sortArray);
+	// }
+
+	// })
+
+	// --------------------to sort price from low to high or high to low from top navigation -----------------//
+
+	let sortPriceFromLow = document.querySelector('#sort-price-low-high');
+	sortPriceFromLow.addEventListener('click', () => {
+		let sortArray = products.sort((a, b) => (a.price > b.price ? 1 : -1));
+		appendList(sortArray);
+
+		$('.product').on('click', 'button', (e) => {
+			let id = e.currentTarget.id;
+			// +id : + sign makes it a number
+			addToCart(products, +id); // call the addToCart Function with arrguments products array and button id( which is set quals to product id)
+
+			$('.totalAmount').text(totalAmount);
+		});
+	});
+
+	let sortPriceFromHigh = document.querySelector('#sort-price-high-low');
+	sortPriceFromHigh.addEventListener('click', () => {
+		let sortArray = products.sort((a, b) => (a.price < b.price ? 1 : -1));
+		appendList(sortArray);
+
+		$('.product').on('click', 'button', (e) => {
+			let id = e.currentTarget.id;
+			// +id : + sign makes it a number
+			addToCart(products, +id); // call the addToCart Function with arrguments products array and button id( which is set quals to product id)
+
+			$('.totalAmount').text(totalAmount);
+		});
+	});
+
+	// ------------------- search product ---------------------------//
+	/* although it can search out the things but seached out product  can not be added into cart.. */
+
+	let searchField = document.querySelector('.searchfield');
+	searchField.addEventListener('keyup', function(e) {
+		// console.log (e.target.value);
+		let myTarget = e.target.value;
+		let filterList = products.filter((product) => {
+			return product.name.toLowerCase().indexOf(myTarget.toLowerCase()) !== -1;
+		});
+		appendList(filterList);
+
+		$('.product').on('click', 'button', (e) => {
+			let id = e.currentTarget.id;
+			// +id : + sign makes it a number
+			addToCart(products, +id); // call the addToCart Function with arrguments products array and button id( which is set quals to product id)
+
+			$('.totalAmount').text(totalAmount);
+		});
+	});
+
+	// ----------------- to show all products on the page -------------------//
+
 	const appendList = (array) => {
 		const template = array.map((item, id) => {
-			return `         
+			return ` 
             <div class="card product d-inline-flex mt-5 mb-2 mr-3 ml-3" style="width: 15rem;" id="${item.id}">
             <img src="${item.picture}" class="card-img-top" alt="${item.description}">
             <div class="card-body mr-auto ml-auto">
@@ -164,10 +251,15 @@ $(() => {
 	};
 	appendList(products);
 
+	//--------------------Cart & add to cart ---------------------//
 	let cart = [];
+
 	const addToCart = (array, id) => {
 		let a = array.find((i) => i.id === id); //after clicking the buying button, if the button's id equals item's id, push the item a into the cart
+
 		cart.push(a);
+		console.log(cart);
+
 		const item = `
                 <li class="item pl-3 pb-1" id="${a.id}">
                 <div class="d-flex">
@@ -181,17 +273,24 @@ $(() => {
 		$('.cart-list').append(item);
 	};
 
+	//----------------remove from cart one by one ------------------------//
 	const removeFromCart = (array, removedItem) => {
 		array.splice(removedItem, 1);
 	};
 
-	//show current item amount in the cart.
 	const populateCart = (array) => {
-		// console.log("array", array);
+		let item = `
+             
+                <li class"item" id="${array.id}">
+                <span class="cartitem">${array.name}</span>
+                <button type="button" class="cancelbtn"><i class="fas fa-times"></i></button>
+                </li>
+                `;
+
 		$('span.amount').text(array.length);
 	};
 
-	// To calculateTotal Price
+	//-------------------- To calculateTotal Price -----------------//
 	const totalAmount = () => {
 		let total = 0;
 		cart.forEach(function(a) {
@@ -200,15 +299,17 @@ $(() => {
 		return total;
 	};
 
-	// click event on each product, once clicked and triggers addToCart function, and append total price by trigger totalPrice function
+	// this is about the button
+	// currentTarget is referring to "this"
+	//+string will make it as number, if this string is a word then the result will be NAN
 	$('.product').on('click', 'button', (e) => {
 		let id = e.currentTarget.id;
 		// +id : + sign makes it a number
-		addToCart(products, +id);
+		addToCart(products, +id); // call the addToCart Function with arrguments products array and button id( which is set quals to product id)
 		$('.totalAmount').text(totalAmount);
 	});
-    
-      // click event on each item in the cart for remove the item. 
+
+	// item removed function
 	$('.cart-list').on('click', 'button', (e) => {
 		let item = $(e.currentTarget).closest('li').remove();
 		removeFromCart(cart, item);
@@ -216,7 +317,20 @@ $(() => {
 		$('.totalAmount').text(totalAmount);
 	});
 
-	document.getElementById('dropdownitem').addEventListener('click', function(event) {
-		event.stopPropagation();
+	//---------------------------- Clear All -------------------------//
+
+	/* It sucessfully clear all the items and amount in the cart but 
+    when I re-select the products, item will not show in the cart, only total amount shows up */
+
+	const removeAll = () => {
+		$('.cart-list').empty(); // clear childnodes 
+		cart = [];
+	};
+
+	$('.clear-all').click((e) => {
+		removeAll();
+		$('span.amount').text(0);
+		$('.totalAmount').text(totalAmount); //because cart has nothing inside so total amount will be 0
 	});
+
 });
