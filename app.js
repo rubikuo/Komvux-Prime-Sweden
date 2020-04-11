@@ -20,9 +20,7 @@ $(() => {
 
     const appendList = (array) => {
         const template = array.map((item, id) => {
-            return `
-            
-            
+            return `         
             <div class="card product d-inline-flex mt-5 mb-2 mr-3 ml-3" style="width: 15rem;" id="${item.id}">
             <img src="${item.picture}" class="card-img-top" alt="${item.description}">
             <div class="card-body mr-auto ml-auto">
@@ -37,14 +35,12 @@ $(() => {
         $('.product-list').html(template);
     }
     appendList(products);
-    let cart = [];
 
+
+    let cart = [];
     const addToCart = (array, id) => {
         let a = array.find(i => i.id === id); //after clicking the buying button, if the button's id equals item's id, push the item a into the cart
-
         cart.push(a);
-
-
         const item = `
                 <li class="item pl-3 pb-1" id="${a.id}">
                 <div class="d-flex">
@@ -59,24 +55,14 @@ $(() => {
     
 }
 
-    
-
 
 
     const removeFromCart = (array, removedItem) => {
         array.splice(removedItem, 1);
-
     }
 
     const populateCart = (array) => {
-        let item = `
-             
-                <li class"item" id="${array.id}">
-                <span class="cartitem">${array.name}</span>
-                <button type="button" class="cancelbtn"><i class="fas fa-times"></i></button>
-                </li>
-                `;
-
+        // console.log("array", array);
         $('span.amount').text(array.length);
     }
     
