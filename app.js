@@ -180,12 +180,17 @@ $(() => {
 	// ------------------- search product ---------------------------//
 	/* although it can search out the things but seached out product  can not be added into cart.. */
 
-	let searchField = document.querySelector('.searchfield');
+    let searchField = document.querySelector('.searchfield');
+  
 	searchField.addEventListener('keyup', function(e) {
-		// console.log (e.target.value);
+        // console.log (e.target.value);
+        $('html, body').animate({
+            scrollTop: $(".product-list").offset().top + 'px'
+        }, "fast");
+
 		let myTarget = e.target.value;
 		let filterList = products.filter((product) => {
-			return product.name.toLowerCase().indexOf(myTarget.toLowerCase()) !== -1;
+			return product.name.toLowerCase().indexOf(myTarget.toLowerCase()) !== -1 || product.category.toLowerCase().indexOf(myTarget.toLowerCase()) !== -1;
 		});
 		appendList(filterList);
 
@@ -197,6 +202,8 @@ $(() => {
 			$('.totalAmount').text(totalAmount);
 		});
 	});
+
+
 
 	// ----------------- to show all products on the page -------------------//
 
@@ -289,7 +296,7 @@ $(() => {
     when I re-select the products, item will not show in the cart, only total amount shows up */
 
 	const removeAll = () => {
-		$('.cart-list').empty(); // clear childnodes 
+		$('.cart-list').empty(); // clear childnodes
 		cart = [];
 	};
 
@@ -298,5 +305,4 @@ $(() => {
 		$('span.amount').text(0);
 		$('.totalAmount').text(totalAmount); //because cart has nothing inside so total amount will be 0
 	});
-
 });
