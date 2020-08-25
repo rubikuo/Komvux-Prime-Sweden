@@ -54,7 +54,7 @@ $(() => {
 			description:
 				'Lorem ipsum dolor sit amet consectetur adipisicing elit. Unde fugit, vel quibusdam fugiat at atque vero, minima ratione tempora architecto sit aperiam similique in quidem, iste nemo debitis quaerat nisi!',
 			picture:
-				'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSlBYvuzC90-1m1woLiqDDt8CnlJUleQ9ihf96WnhPeDFbfFvZxbg',
+				'https://i.pinimg.com/564x/40/65/ac/4065acab89b3cc89a3568c46dbf4e06a.jpg',
 			category: 'Party Time'
 		},
 		{
@@ -73,7 +73,7 @@ $(() => {
 			description:
 				'Lorem ipsum dolor sit amet consectetur adipisicing elit. Unde fugit, vel quibusdam fugiat at atque vero, minima ratione tempora architecto sit aperiam similique in quidem, iste nemo debitis quaerat nisi!',
 			picture:
-				'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQeCgUzeWidGqx3ycwGz-OUMXoOv3OTJUqM8O1DzXzYPYX4Jfb2gA',
+				'https://stylish-outfits.com/wp-content/uploads/2019/05/ez-1557523277-5848090-300x300.jpg',
 			category: 'Stay Cozy'
 		},
 		{
@@ -94,7 +94,7 @@ $(() => {
 				'Lorem ipsum dolor sit amet consectetur adipisicing elit. Unde fugit, vel quibusdam fugiat at atque vero, minima ratione tempora architecto sit aperiam similique in quidem, iste nemo debitis quaerat nisi!',
 			picture:
 				'https://m.media-amazon.com/images/S/aplus-seller-content-images-us-east-1/ATVPDKIKX0DER/A3GZDTM3QP2SDS/e56ba951-d4b9-4062-a450-56746bda0deb._CR0,0,300,300_PT0_SX300__.jpg',
-			category: 'Beach Fun'
+			category: 'Summer vibes'
 		},
 		{
 			name: 'LISAI',
@@ -104,7 +104,7 @@ $(() => {
 				'Lorem ipsum dolor sit amet consectetur adipisicing elit. Unde fugit, vel quibusdam fugiat at atque vero, minima ratione tempora architecto sit aperiam similique in quidem, iste nemo debitis quaerat nisi!',
 			picture:
 				'https://m.media-amazon.com/images/S/aplus-seller-content-images-us-east-1/ATVPDKIKX0DER/A3GZDTM3QP2SDS/66fa5c66-b12c-4d0b-93ab-8e1333e13423._CR0,0,1000,1000_PT0_SX300__.jpg',
-			category: 'Beach Fun'
+			category: 'Summer vibes'
 		},
 		{
 			name: 'RUBIS',
@@ -113,8 +113,8 @@ $(() => {
 			description:
 				'Lorem ipsum dolor sit amet consectetur adipisicing elit. Unde fugit, vel quibusdam fugiat at atque vero, minima ratione tempora architecto sit aperiam similique in quidem, iste nemo debitis quaerat nisi!',
 			picture:
-				'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRCoYIGyWqBJllIV-KdWzMSFZRJW2CfI9p65ySFpoP7yw-jaaAixQ',
-			category: 'Beach fun'
+				'https://cdn.shopify.com/s/files/1/0270/2239/3441/products/product-image-954166530_300x300.jpg?v=1572593321',
+			category: 'Summer vibes'
 		},
 		{
 			name: 'OLIVI',
@@ -142,7 +142,7 @@ $(() => {
 			id: 15,
 			description:
 				'Lorem ipsum dolor sit amet consectetur adipisicing elit. Unde fugit, vel quibusdam fugiat at atque vero, minima ratione tempora architecto sit aperiam similique in quidem, iste nemo debitis quaerat nisi!',
-			picture: 'https://i.ebayimg.com/images/g/Q8MAAOSwDFBaBUiL/s-l300.jpg',
+			picture: 'https://static-cdn.jtvnw.net/jtv_user_pictures/96abecb4-170d-479f-960a-d411a4aab616-profile_image-300x300.png',
 			category: 'Winter Mys'
 		}
 	];
@@ -210,9 +210,9 @@ $(() => {
 	const appendList = (array) => {
 		const template = array.map((item, id) => {
 			return ` 
-            <div class="card product d-inline-flex mt-5 mb-2 mr-3 ml-3" style="width: 15rem;" id="${item.id}">
+            <div class="card product mt-5 mb-2 mr-3 ml-3" style="width: 15rem;" id="${item.id}">
             <img src="${item.picture}" class="card-img-top" alt="${item.description}">
-            <div class="card-body mr-auto ml-auto">
+            <div class="card-body >
             <h5 class="card-title">${item.name} - <span class="category">${item.category}</span> <small>${item.price}kr</small></h5>
             <p class="card-text">${item.description}</p>
             <button type="button" id="${item.id}">Buy Now!</button>
